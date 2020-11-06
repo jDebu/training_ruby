@@ -1,0 +1,25 @@
+<!--local true desactiva peticiones con ajax-->
+<%= form_with model: article, local: true do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %><br>
+    <% if article.errors.full_messages_for(:title).any? %>
+      <%= article.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %><br>
+    <% if article.errors.full_messages_for(:body).any? %>
+      <%= article.errors.full_messages_for(:body).each do |msg| %>
+        <div><%= msg %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
